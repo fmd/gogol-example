@@ -9,8 +9,8 @@ func main() {
     bronson.Init(bronson.WindowOpts{Title: "Bottom Dollar", Width: 640, Height: 480})
     defer bronson.Cleanup()
 
-    bronson.OnKeyDown(bronson.K_A, doStuff)
-    bronson.OnKeyUp(bronson.K_A, doMoreStuff)
+    bronson.OnKeyDown(bronson.K_RETURN, doStuff)
+    bronson.OnKeyUp(bronson.K_RETURN, doMoreStuff)
 
     for !bronson.ShouldQuit() {
         bronson.ProcessOneFrame()
