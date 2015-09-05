@@ -11,6 +11,7 @@ func main() {
 
     bronson.OnKeyDown(bronson.K_RETURN, doStuff)
     bronson.OnKeyUp(bronson.K_RETURN, doMoreStuff)
+    bronson.OnMouseDown(bronson.M_LEFT, doMouseStuff)
 
     for !bronson.ShouldQuit() {
         bronson.ProcessOneFrame()
@@ -23,4 +24,8 @@ func doStuff(code bronson.KeyCode) {
 
 func doMoreStuff(code bronson.KeyCode) {
     fmt.Println("Done stuff!")
+}
+
+func doMouseStuff(code bronson.KeyCode) {
+    fmt.Println("Done mouse stuff!")
 }
