@@ -1,31 +1,33 @@
 package main
 
 import (
-    "github.com/fmd/bronson"
+    "github.com/fmd/gogol"
     "fmt"
 )
 
 func main() {
-    bronson.Init(bronson.WindowOpts{Title: "Bottom Dollar", Width: 640, Height: 480})
-    defer bronson.Cleanup()
+    gogol.Init(gogol.WindowOpts{Title: "Bottom Dollar", Width: 640, Height: 480})
+    defer gogol.Cleanup()
 
-    bronson.OnKeyDown(bronson.K_RETURN, doStuff)
-    bronson.OnKeyUp(bronson.K_RETURN, doMoreStuff)
-    bronson.OnMouseDown(bronson.M_LEFT, doMouseStuff)
+    gogol.OnKeyDown(gogol.K_RETURN, doStuff)
+    gogol.OnKeyUp(gogol.K_RETURN, doMoreStuff)
+    gogol.OnMouseDown(gogol.M_LEFT, doMouseStuff)
 
-    for !bronson.ShouldQuit() {
-        bronson.ProcessOneFrame()
+    gogol.CreateQuad(gogol.QuadOpts{Width: 25.0, Height: 25.0})
+
+    for !gogol.ShouldQuit() {
+        gogol.ProcessOneFrame()
     }
 }
 
-func doStuff(code bronson.KeyCode) {
+func doStuff(code gogol.KeyCode) {
     fmt.Println("Doing stuff!")
 }
 
-func doMoreStuff(code bronson.KeyCode) {
+func doMoreStuff(code gogol.KeyCode) {
     fmt.Println("Done stuff!")
 }
 
-func doMouseStuff(code bronson.KeyCode) {
+func doMouseStuff(code gogol.KeyCode) {
     fmt.Println("Done mouse stuff!")
 }
