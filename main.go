@@ -6,17 +6,22 @@ import (
 )
 
 func main() {
-    gogol.Init(gogol.WindowOpts{Title: "Bottom Dollar", Width: 640, Height: 480})
+    gogol.Init(gogol.WindowOpts{Title: "Gogol Example", Width: 640, Height: 480})
     defer gogol.Cleanup()
 
     gogol.OnKeyDown(gogol.K_RETURN, doStuff)
     gogol.OnKeyUp(gogol.K_RETURN, doMoreStuff)
     gogol.OnMouseDown(gogol.M_LEFT, doMouseStuff)
 
-    gogol.CreateQuad(gogol.QuadOpts{Width: 25.0, Height: 25.0})
+    p := gogol.NewQuad(gogol.QuadOpts{Width: 25.0, Height: 25.0})
+    g := gogol.NewQuad(gogol.QuadOpts{Width: 25.0, Height: 25.0})
+
+    g.Translate(100.0, 0.0)
+    p.AddChild(g)
 
     for !gogol.ShouldQuit() {
         gogol.ProcessOneFrame()
+        p.Rotate(0.1)
     }
 }
 
