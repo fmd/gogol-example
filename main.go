@@ -26,11 +26,11 @@ func main() {
 }
 
 func hideStuff(code gogol.KeyCode) {
-    gogol.G.Renderer.RenderList.GetLayer("default").Hide()
+    gogol.GetLayers("default").Hide()
 }
 
 func showStuff(code gogol.KeyCode) {
-    gogol.G.Renderer.RenderList.GetLayer("default").Show()
+    gogol.GetLayers("default").Show()
 }
 
 func doMouseStuff(code gogol.KeyCode) {
