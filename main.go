@@ -9,8 +9,8 @@ func main() {
     gogol.Init(gogol.WindowOpts{Title: "Gogol Example", Width: 640, Height: 480})
     defer gogol.Cleanup()
 
-    gogol.OnKeyDown(gogol.K_RETURN, doStuff)
-    gogol.OnKeyUp(gogol.K_RETURN, doMoreStuff)
+    gogol.OnKeyDown(gogol.K_RETURN, hideStuff)
+    gogol.OnKeyUp(gogol.K_RETURN, showStuff)
     gogol.OnMouseDown(gogol.M_LEFT, doMouseStuff)
 
     p := gogol.NewQuad(gogol.QuadOpts{Width: 25.0, Height: 25.0})
@@ -25,12 +25,12 @@ func main() {
     }
 }
 
-func doStuff(code gogol.KeyCode) {
-    fmt.Println("Doing stuff!")
+func hideStuff(code gogol.KeyCode) {
+    gogol.G.Renderer.RenderList.GetLayer("default").Hide()
 }
 
-func doMoreStuff(code gogol.KeyCode) {
-    fmt.Println("Done stuff!")
+func showStuff(code gogol.KeyCode) {
+    gogol.G.Renderer.RenderList.GetLayer("default").Show()
 }
 
 func doMouseStuff(code gogol.KeyCode) {
